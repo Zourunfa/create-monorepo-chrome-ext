@@ -1,0 +1,19 @@
+{
+  "name": "@extension/options",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "vue": "^3.4.21",
+    "@extension/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.0"
+  }
+}

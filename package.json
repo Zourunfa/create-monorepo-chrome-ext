@@ -1,0 +1,27 @@
+{
+  "name": "create-monorepo-chrome-ext",
+  "version": "1.0.0",
+  "description": "A CLI tool to scaffold monorepo Chrome extensions with Vue/React support",
+  "type": "module",
+  "bin": {
+    "create-monorepo-chrome-ext": "./bin/cli.js"
+  },
+  "scripts": {
+    "dev": "node bin/cli.js",
+    "test": "node bin/cli.js test-project"
+  },
+  "keywords": [
+    "chrome-extension",
+    "monorepo",
+    "vue",
+    "react",
+    "scaffold",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "prompts": "^2.4.2",
+    "kolorist": "^1.8.0"
+  }
+}
