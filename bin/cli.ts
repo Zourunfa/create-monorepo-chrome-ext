@@ -8,23 +8,41 @@ import { red, green, cyan, yellow, bold } from 'kolorist'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const FRAMEWORKS = [
+interface Framework {
+  name: string
+  display: string
+  color: (text: string) => string
+}
+
+interface Language {
+  name: string
+  display: string
+  color: (text: string) => string
+}
+
+interface InitResult {
+  projectName?: string
+  framework?: string
+  language?: string
+}
+
+const FRAMEWORKS: Framework[] = [
   { name: 'vue', display: 'Vue', color: green },
   { name: 'react', display: 'React', color: cyan }
 ]
 
-const LANGUAGES = [
+const LANGUAGES: Language[] = [
   { name: 'js', display: 'JavaScript', color: yellow },
   { name: 'ts', display: 'TypeScript', color: cyan }
 ]
 
-async function init() {
+async function init(): Promise<void> {
   console.log(bold(cyan('\n🚀 Create Monorepo Chrome Extension\n')))
 
   const args = process.argv.slice(2)
   let targetDir = args[0] || 'my-chrome-extension'
 
-  let result = {}
+  let result: InitResult = {}
 
   try {
     result = await prompts(
@@ -105,13 +123,13 @@ async function init() {
   console.log()
 }
 
-function copyDir(srcDir, destDir) {
+function copyDir(srcDir: string, destDir: string): void {
   fs.mkdirSync(destDir, { recursive: true })
-  
+
   for (const file of fs.readdirSync(srcDir)) {
     const srcFile = path.join(srcDir, file)
     const destFile = path.join(destDir, file)
-    
+
     const stat = fs.statSync(srcFile)
     if (stat.isDirectory()) {
       copyDir(srcFile, destFile)
